@@ -1,0 +1,70 @@
+<div class="container">
+  <br>
+  <h4>
+    <mark>Car: </mark>{{name}}
+    <small> {{model}}</small>
+  </h4>
+  <div class="alert alert-success">
+    Options:
+    <ul>
+      <li>Max speed: <strong>{{speed}}</strong>mph</li>
+      <li>Color of the car: <strong>{{colors.car}}</strong></li>
+      <li>Color of the salon: <strong>{{colors.salon}}</strong></li>
+      <li>Color of wheels: <strong>{{colors.wheels}}</strong></li>
+    </ul>
+  </div>
+  <h5>Edit object</h5>
+  <button class="btn btn-warning" (click)="showEdit()">Edit</button>
+  <form *ngIf=isEdit>
+    <div class="form-group">
+      <br>
+      <input type="text"
+        pleceholder="enter car name" 
+        class="form-control" [(ngModel)]="name" name="name">
+      <br>
+      <input type="text"
+       pleceholder="enter car model" 
+       class="form-control" [(ngModel)]="model" name="model">
+       <br>
+      <input type="text"
+       pleceholder="enter speed" 
+       class="form-control" [(ngModel)]="speed" name="speed">
+      <br>
+      <input type="text"
+       pleceholder="enter color of car" 
+       class="form-control" [(ngModel)]="colors.car" name="car">
+      <br>
+      <input type="text"
+       pleceholder="enter color of salon" 
+       class="form-control" [(ngModel)]="colors.salon" name="salon">
+      <br>
+      <input type="text"
+       pleceholder="enter color of wheels" 
+       class="form-control" [(ngModel)]="colors.wheels" name="wheels">
+    </div>
+  </form>
+  <h5>Car options:</h5>
+  <form (submit)="addOpt(option.value)">
+    <div class="form-group">
+      <label for="option">Add new option</label>
+      <input type="text" id="option"
+       pleceholder="enter option you need" 
+       class="form-control" #option>
+      <br>
+      <button type="submit" class="btn btn-outline-success">Add</button>
+    </div>
+  </form>
+  <div class="alert alert-warning">
+    <ul>
+      <li *ngFor="let opt of options">{{opt}}
+        <button class="btn btn-warning btn-sm" (click)="deleteOpt(opt)">X</button>
+      </li>
+    </ul>
+  </div>
+  <h5>Choose the car</h5>
+  <button class="btn btn-danger" (click)="carSelect('bmw')">BMW</button>
+  <button class="btn btn-success" (click)="carSelect('audi')">Audi</button>
+  <button class="btn btn-info" (click)="carSelect('mer')">Mercedes</button>
+</div> 
+
+
